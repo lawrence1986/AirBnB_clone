@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""This is the module for entry points"""
 
 import cmd
 from models import storage
@@ -8,6 +9,8 @@ import json
 
 
 class HBNBCommand(cmd.Cmd):
+
+	"""The class for command interpreter."""
     
     prompt = "(hbnb)"
 
@@ -132,6 +135,3 @@ class HBNBCommand(cmd.Cmd):
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
-
-
-
