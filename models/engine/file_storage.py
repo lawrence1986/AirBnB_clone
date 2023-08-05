@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-
+"""This is the Module for class FileStorage"""
 import datetime
 import json
 import os
@@ -8,10 +8,14 @@ import os
 
 class FileStorage:
 
+    """Storing and retrieving data class"""
+
     __file_path = "folder.json"
     __objects = {}
 
     def all(self):
+
+	"""This returns dictionary __objects"""
 
         return FileStorage.__objects
 
