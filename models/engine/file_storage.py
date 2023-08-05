@@ -19,5 +19,21 @@ class FileStorage:
 
         class_name = type(obj).__name__
         key = "{}.{}".format(class_name, obj.id)
+        obj = FileStorage.__objects[key]
 
+    def save(self):
 
+        with open(FileStorage.__file_path, "w", encoding="utf-8") as f:
+            d = {k: v.to_dict() for k, v in FileStorage.__objects.items()}
+            json.dump(d, f)
+
+    def reload(self):
+        file_path = FileStorage.__file_path
+
+        if not os.path.isfile(file_path):
+            return
+        with open(file_path, "r", encoding="utf-8") as f:
+            obj_dict = json.load(f)
+            obj_dict = {k: self.classes()[v["__class__"]](**v)
+                        for k, v in obj_dict.items()}
+            obj_dict = FileStorage.__objects
