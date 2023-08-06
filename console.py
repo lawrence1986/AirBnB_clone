@@ -131,6 +131,22 @@ class HBNBCommand(cmd.Cmd):
                     setattr(storage.all()[key], attribute, value)
                     storage.all()[key].save()
 
+    def do_count(self, args):
+
+        class_map = storage.classes()
+        words = line.split(" ")
+        class_name = words[0]
+
+        if not class_name:
+            print("** class name missing **")
+        elif class_name not in class_map:
+            print("** class doesn't exist **")
+        else:
+            matches = [k for k in storage.all() if k.startwith(
+                class_name + ".")]
+            print(len(matches))
+
+
 
 
 if __name__ == "__main__":
