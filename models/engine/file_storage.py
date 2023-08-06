@@ -11,21 +11,22 @@ class FileStorage:
     
     """Dictionary to store objects"""
     __objects = {}
+    fso = FileStorage.__objects
 
     def all(self):
         """This returns dictionary __objects"""
-        return FileStorage.__objects
+        return fso
 
     def new(self, obj):
     """Generates a unique key for the object and adds it to the objects dictionary"""
         class_name = type(obj).__name__
         key = "{}.{}".format(class_name, obj.id)
-        obj = FileStorage.__objects[key]
+        obj = fso[key]
 
     def save(self):
         """Saves the objects dictionary to a JSON file"""
         with open(FileStorage.__file_path, "w", encoding="utf-8") as f:
-            d = {k: v.to_dict() for k, v in FileStorage.__objects.items()}
+            d = {k: v.to_dict() for k, v in fso.items()}
             json.dump(d, f)
 
     def reload(self):
@@ -38,7 +39,7 @@ class FileStorage:
             obj_dict = json.load(f)
         """Creates instances of classes based on the __class__ attribute in the JSON data"""
             obj_dict = {k: self.classes()[v["__class__"]](**v) for k, v in obj_dict.items()}
-            obj_dict = FileStorage.__objects
+            obj_dict = fso
 
     def classes(self):
        """Imports and returns a dictionary of class names and their corresponding classes"""
