@@ -219,10 +219,8 @@ class HBNBCommand(cmd.Cmd):
             self._precmd(ar)
 
         def emptyline(self):
-        """Doesn't do anything on ENTER.
-        """
 
-        pass
+            pass
 
 
 if __name__ == "__main__":
