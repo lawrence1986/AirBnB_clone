@@ -11,14 +11,14 @@ class FileStorage:
     
     """Dictionary to store objects"""
     __objects = {}
-    fso = FileStorage.__objects
 
     def all(self):
         """This returns dictionary __objects"""
+        fso = FileStorage.__objects
         return fso
 
     def new(self, obj):
-    """Generates a unique key for the object and adds it to the objects dictionary"""
+        """Generates a key for the object,adds it to objects dict"""
         class_name = type(obj).__name__
         key = "{}.{}".format(class_name, obj.id)
         obj = fso[key]
@@ -37,12 +37,11 @@ class FileStorage:
             return
         with open(file_path, "r", encoding="utf-8") as f:
             obj_dict = json.load(f)
-        """Creates instances of classes based on the __class__ attribute in the JSON data"""
             obj_dict = {k: self.classes()[v["__class__"]](**v) for k, v in obj_dict.items()}
             obj_dict = fso
 
     def classes(self):
-       """Imports and returns a dictionary of class names and their corresponding classes"""
+        """Returns a dictionary of valid classes and their references"""
         from models.base_model import BaseModel
         from models.user import User
         from models.state import State
