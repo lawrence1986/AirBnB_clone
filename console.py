@@ -13,38 +13,38 @@ class HBNBCommand(cmd.Cmd):
     
     prompt = "(hbnb)"
 
-    def do_EOF(self, args):
+    def do_EOF(self, ar):
         """exit the program"""
 
         print()
         """Print a newline before exiting"""
         return True
 
-    def do_quit(self, args):
+    def do_quit(self, ar):
         """exit the program"""
         return True
 
-    def do_create(self, args):
+    def do_create(self, ar):
         """Create a new instance of BaseModel"""
         class_map = storage.classes()
 
-        if not args:
+        if not ar:
             print("** class name missing **")
-        elif args is not class_map:
+        elif ar is not class_map:
             print("** class doesn't exist **")
         else:
-            ins = class_map[args]()
+            ins = class_map[ar]()
             ins.save()
             print(ins.id)
 
-    def do_show(self, args):
+    def do_show(self, ar):
         """print rep of an instance"""
         class_map = storage.classes()
 
-        if not args:
+        if not ar:
             print("** class name missing **")
         else:
-            words = args.split(' ')
+            words = ar.split(' ')
             if words[0] not in class_map:
                 print("** class doesn't exist **")
             elif len(words) < 2:
@@ -56,14 +56,14 @@ class HBNBCommand(cmd.Cmd):
                 else:
                     print(storage.all[key])
 
-    def do_destroy(self, args):
+    def do_destroy(self, ar):
 
         class_map = storage.classes()
 
-        if not args:
+        if not ar:
             print("** class name missing **")
         else:
-            words = args.split(" ")
+            words = ar.split(" ")
             if words[0] not in class_map:
                 print("** class doesn't exist **")
             elif len(words) < 2:
@@ -76,11 +76,11 @@ class HBNBCommand(cmd.Cmd):
                     del storage.all()[key]
                     storage.save()
 
-    def do_all(self, args):
+    def do_all(self, ar):
         class_map = storage.classes()
 
-        if args != "":
-            words = args.split(" ")
+        if ar != "":
+            words = ar.split(" ")
             if words[0] not in class_map:
                 print("** class doesn't exist **")
             else:
@@ -92,13 +92,13 @@ class HBNBCommand(cmd.Cmd):
             new_list = [str(obj) for key, obj in storage.all().items()]
             print(new_list)
 
-    def do_update(self, args):
-        if not args:
+    def do_update(self, ar):
+        if not ar:
             print("** class name missing **")
             return
 
         rex = r'^(\S+)(?:\s(\S+)(?:\s(\S+)(?:\s((?:"[^"]*")|(?:(\S)+)))?)?)?'
-        match = re.search(rex, args)
+        match = re.search(rex, ar)
         if not match:
             print("** class name missing **")
             return
@@ -125,15 +125,15 @@ class HBNBCommand(cmd.Cmd):
                    attribute not in ["id", "created_at", "updated_at"]:
                     try:
                         value = eval(value)
-                    except NameError:
+                    except ValueError:
                         pass
                     setattr(storage.all()[key], attribute, value)
                     storage.all()[key].save()
 
-    def do_count(self, args):
+    def do_count(self, ar):
 
         class_map = storage.classes()
-        words = args.split(" ")
+        words = ar.split(" ")
         class_name = words[0]
 
         if not class_name:
@@ -143,14 +143,14 @@ class HBNBCommand(cmd.Cmd):
         else:
             matches = [
                     k for k in storage.all() if k.startswith(
-                class_name + ".")]
+                        class_name + ".")]
             print(len(matches))
 
-    def _precmd(self, arg):
+    def _precmd(self, ar):
         """Intercepts commands to test for class.syntax()"""
-        match = re.search(r"^(\w*)\.(\w+)(?:\(([^)]*)\))$", arg)
+        match = re.search(r"^(\w*)\.(\w+)(?:\(([^)]*)\))$", args)
         if not match:
-            return arg
+            return ar
 
         classname, method, args = match.groups()
         uid, attr_or_dict = extract_uid_and_args(args)
