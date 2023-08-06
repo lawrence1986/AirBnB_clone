@@ -9,8 +9,7 @@ import json
 
 
 class HBNBCommand(cmd.Cmd):
-
-	"""The class for command interpreter."""
+    """The class for command interpreter."""
     
     prompt = "(hbnb)"
 
@@ -61,7 +60,7 @@ class HBNBCommand(cmd.Cmd):
 
         class_map = storage.classes()
 
-        if is not args:
+        if not args:
             print("** class name missing **")
         else:
             words = args.split(" ")
@@ -99,7 +98,7 @@ class HBNBCommand(cmd.Cmd):
             return
 
         rex = r'^(\S+)(?:\s(\S+)(?:\s(\S+)(?:\s((?:"[^"]*")|(?:(\S)+)))?)?)?'
-        match = re.search(rex, line)
+        match = re.search(rex, args)
         if not match:
             print("** class name missing **")
             return
@@ -134,7 +133,7 @@ class HBNBCommand(cmd.Cmd):
     def do_count(self, args):
 
         class_map = storage.classes()
-        words = line.split(" ")
+        words = args.split(" ")
         class_name = words[0]
 
         if not class_name:
@@ -142,11 +141,10 @@ class HBNBCommand(cmd.Cmd):
         elif class_name not in class_map:
             print("** class doesn't exist **")
         else:
-            matches = [k for k in storage.all() if k.startwith(
+            matches = [
+                    k for k in storage.all() if k.startswith(
                 class_name + ".")]
             print(len(matches))
-
-
 
 
 if __name__ == "__main__":
