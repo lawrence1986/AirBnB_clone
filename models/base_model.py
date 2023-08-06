@@ -10,6 +10,8 @@ from models import storage
 
 class BaseModel:
 
+	"""The Other class inherits from this class"""
+
     def __init__(self, *args, **kwargs):
         if kwargs != None and kwargs != {}:
             for key in kwargs:
@@ -25,15 +27,18 @@ class BaseModel:
             self.updated_at = datetime.now()
             storage.new(self)
     def __str__(self):
+	    """String Representation"""
         return "[{}] ({}) {}".\
                 format(type(self).__name__, self.id, self.__dict__)
 
     def save(self):
+	    """This updates the instance updated_at"""
 
         self.updated_at = datetime.now()
         storage.save()
 
     def to_dict(self):
+	    """This returns a dictionary containing all keys/values of __dict__"""
 
         is_dict = self.__dict__.copy()
        is_dict["__class__"] = type(self).__name__
