@@ -215,8 +215,14 @@ class HBNBCommand(cmd.Cmd):
                             storage.all()[key].save()
 
         def default(self, ar):
-        """Catch commands if nothing else matches then."""
-        self._precmd(ar)
+            """Catch commands if nothing else matches then."""
+            self._precmd(ar)
+
+        def emptyline(self):
+        """Doesn't do anything on ENTER.
+        """
+
+        pass
 
 
 if __name__ == "__main__":
