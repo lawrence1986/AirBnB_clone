@@ -214,6 +214,10 @@ class HBNBCommand(cmd.Cmd):
                             setattr(storage.all()[key], attribute, value)
                             storage.all()[key].save()
 
+        def default(self, ar):
+        """Catch commands if nothing else matches then."""
+        self._precmd(ar)
+
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
