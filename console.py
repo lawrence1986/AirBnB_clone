@@ -2,20 +2,18 @@
 """This is the module for entry points"""
 
 import cmd
-from models import storage
-from models.base_model import BaseModel
 import re
 import json
-
+from models import storage
+from models.base_model import BaseModel
 
 class HBNBCommand(cmd.Cmd):
     """The class for command interpreter."""
-    
+
     prompt = "(hbnb)"
 
     def do_EOF(self, ar):
         """exit the program"""
-
         print()
         """Print a newline before exiting"""
         return True
@@ -30,7 +28,7 @@ class HBNBCommand(cmd.Cmd):
 
         if not ar:
             print("** class name missing **")
-        elif ar is not class_map:
+        elif ar not in class_map:
             print("** class doesn't exist **")
         else:
             ins = class_map[ar]()
@@ -54,10 +52,9 @@ class HBNBCommand(cmd.Cmd):
                 if key not in storage.all():
                     print("** no instance found **")
                 else:
-                    print(storage.all[key])
+                    print(storage.all()[key])
 
     def do_destroy(self, ar):
-
         class_map = storage.classes()
 
         if not ar:
@@ -141,7 +138,6 @@ class HBNBCommand(cmd.Cmd):
                 storage.all()[key].save()
 
     def do_count(self, ar):
-
         class_map = storage.classes()
         words = ar.split(" ")
         class_name = words[0]
@@ -156,9 +152,8 @@ class HBNBCommand(cmd.Cmd):
                         class_name + ".")]
             print(len(matches))
 
-        def _precmd(self, ar):
-            """Intercepts commands to test for class.syntax()"""
-        # print("PRECMD:::", line)
+    def _precmd(self, ar):
+        """Intercepts commands to test for class.syntax()"""
         match = re.search(r"^(\w*)\.(\w+)(?:\(([^)]*)\))$", ar)
         if not match:
             return ar
@@ -176,7 +171,6 @@ class HBNBCommand(cmd.Cmd):
         attr_and_value = ""
         if method == "update" and attr_or_dict:
             match_dict = re.search('^({.*})$', attr_or_dict)
-
             if match_dict:
                 self.update_dict(classname, uid, match_dict.group(1))
                 return ""
@@ -189,37 +183,6 @@ class HBNBCommand(cmd.Cmd):
         self.onecmd(command)
         return command
 
-
-        def update_dict(self, classname, uid, s_dict):
-            """Helper method for update() with a dictionary."""
-            s = s_dict.replace("'", '"')
-            d = json.loads(s)
-            if not classname:
-                print("** class name missing **")
-            elif classname not in storage.classes():
-                print("** class doesn't exist **")
-            elif uid is None:
-                print("** instance id missing **")
-            else:
-                key = "{}.{}".format(classname, uid)
-                if key not in storage.all():
-                    print("** no instance found **")
-                else:
-                    attributes = storage.attributes()[classname]
-                    for attribute, value in d.items():
-                        if attribute in attributes:
-                            value = attributes[attribute](value)
-                        setattr(storage.all()[key], attribute, value)
-                    storage.all()[key].save()
-
-        def default(self, ar):
-            """Catch commands if nothing else matches then."""
-            self._precmd(ar)
-
-        def emptyline(self):
-
-            pass
-
-
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
+
