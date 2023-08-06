@@ -4,5 +4,5 @@
 from models.base_model import BaseModel
 
 class Amenity(BaseModel):
-"""Manages amenity object class"""
+    """Manages amenity object class"""
     name = ""
