@@ -60,6 +60,9 @@ class HBNBCommand(cmd.Cmd):
                     print(storage.all()[key])
 
     def do_destroy(self, ar):
+        """Deletes an instance based on the class name and id.
+        """
+
         class_map = storage.classes()
 
         if not ar:
@@ -86,6 +89,9 @@ class HBNBCommand(cmd.Cmd):
         storage.save()
 
     def do_all(self, ar):
+        """Prints all string representation of all instances.
+        """
+
         class_map = storage.classes()
 
         if ar:
@@ -102,6 +108,9 @@ class HBNBCommand(cmd.Cmd):
             print(new_list)
 
     def do_update(self, ar):
+        """Updates an instance by adding or updating attribute.
+        """
+
         if not ar:
             print("** class name missing **")
             return
@@ -150,6 +159,9 @@ class HBNBCommand(cmd.Cmd):
                     storage.all()[key].save()
 
     def do_count(self, ar):
+        """Counts the instances of a class.
+        """
+
         class_map = storage.classes()
         words = ar.split(" ")
         class_name = words[0]
