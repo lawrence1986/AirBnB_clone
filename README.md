@@ -30,13 +30,8 @@ All of the following files are programs written in Python:
 | -------- | ----------- |
 | ` 0. README, AUTHORS` | README.md, AUTHORS.|
 | ` 1. Be pycodestyle compliant!` | Prints a char.|
-| ` functions1.c` | Prints an unsigned number|
-| ` functions2.c` | Prints the value of a pointer variable|
-| ` get_flags.c` | Write a function calculate active flags.|
-| ` get_precision.c` | Calculates the precision for printing |
-| ` get_size.c` | Calculates the size to cast the argument |
-| ` get_width.c` | Calculates the width for printing |
-| ` handlr_print.c` | Prints an argument based on its type |
-| ` main.h` | source file for all executable prototypes for program|
-| ` utils.c` | A function that evaluates if a char is printable|
-| ` write_handlers.c` | A function that explicitly prints a string |
+| ` 2. Unittests` | tests|
+| ` 3. BaseModel` | models/base_model.py, models/__init__.py, tests/|
+| ` 4. Create BaseModel from dictionary` | models/base_model.py, tests/.|
+| ` 5. Store first object` | models/engine/file_storage.py, models/engine/__init__.py, models/__init__.py, models/base_model.py, tests/ |
+| ` 6. Console 0.0.1` | console.py |
