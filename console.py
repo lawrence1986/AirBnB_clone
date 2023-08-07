@@ -13,6 +13,11 @@ class HBNBCommand(cmd.Cmd):
 
     prompt = "(hbnb)"
 
+    def default(self, line):
+        """Catch commands if nothing else matches then."""
+        # print("DEF:::", line)
+        self._precmd(line)
+
     def do_EOF(self, ar):
         """Exit the program"""
         print()
