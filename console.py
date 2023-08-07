@@ -65,9 +65,9 @@ class HBNBCommand(cmd.Cmd):
         if not ar:
             print("** class name missing **")
             return
-        
+
         words = ar.split(" ")
-        
+
         if words[0] not in class_map:
             print("** class doesn't exist **")
             return
@@ -77,7 +77,7 @@ class HBNBCommand(cmd.Cmd):
             return
 
         key = f"{words[0]}.{words[1]}"
-        
+
         if key not in storage.all():
             print("** no instance found **")
             return
@@ -199,7 +199,9 @@ class HBNBCommand(cmd.Cmd):
 
     def extract_attr_and_value(self, attr_or_dict):
 
-        match_attr_and_value = re.search('^(?:"([^"]*)")?(?:, (.*))?$', attr_or_dict)
+        match_attr_and_value = re.search(
+                r'^(?:"([^"]*)")?(?:, (.*))?$', attr_or_dict)
+
         attr = match_attr_and_value.group(1) if match_attr_and_value else ""
         value = match_attr_and_value.group(2) if match_attr_and_value else ""
         return f'"{attr}" {value}'
