@@ -7,21 +7,20 @@ import json
 from models import storage
 from models.base_model import BaseModel
 
+
 class HBNBCommand(cmd.Cmd):
-
-
     """The class for command interpreter."""
 
     prompt = "(hbnb)"
 
     def do_EOF(self, ar):
-        """exit the program"""
+        """Exit the program"""
         print()
         """Print a newline before exiting"""
         return True
 
     def do_quit(self, ar):
-        """exit the program"""
+        """Exit the program"""
         return True
 
     def do_create(self, ar):
@@ -38,7 +37,7 @@ class HBNBCommand(cmd.Cmd):
             print(ins.id)
 
     def do_show(self, ar):
-        """print rep of an instance"""
+        """Print representation of an instance"""
         class_map = storage.classes()
 
         if not ar:
