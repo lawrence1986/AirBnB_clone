@@ -112,7 +112,11 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
             return
 
-        classname, uid, attribute, value = match.groups()
+        classname = match.group(1)
+        uid = match.group(2)
+        attribute = match.group(3)
+        value = match.group(4)
+
         if classname not in storage.classes():
             print("** class doesn't exist **")
         elif uid is None:
