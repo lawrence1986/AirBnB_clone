@@ -14,3 +14,11 @@
 * The length of your files will be tested using wc
 * All your modules should have a documentation (python3 -c 'print(__import__("my_module").__doc__)')
 * All your classes should have a documentation (python3 -c 'print(__import__("my_module").MyClass.__doc__)')
+
+## Python Unit Tests
+* All your test files should be inside a folder tests
+* You have to use the unittest module
+* All your test files should be python files (extension: .py)
+* All your test files and folders should start by test_
+* Your file organization in the tests folder should be the same as your project
+* All your tests should be executed by using this command: python3 -m unittest discover tests
