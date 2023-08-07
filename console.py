@@ -208,25 +208,38 @@ class HBNBCommand(cmd.Cmd):
 
     def update_dict(self, classname, uid, s_dict):
         """Helper method for update() with a dictionary."""
-        s = s_dict.replace("'", '"')
-        d = json.loads(s)
+        if not self.check_and_print_errors(classname, uid):
+            return
+
+        d = json.loads(s_dict.replace("'", '"'))
+        key = f"{classname}.{uid}"
+        attributes = storage.attributes().get(classname, {})
+
+        instance = storage.all().get(key)
+        if instance:
+            self.update_instance_with_dict(instance, attributes, d)
+            instance.save()
+        else:
+            print("** no instance found **")
+
+    def check_and_print_errors(self, classname, uid):
+
         if not classname:
             print("** class name missing **")
+            return False
         elif classname not in storage.classes():
             print("** class doesn't exist **")
+            return False
         elif uid is None:
             print("** instance id missing **")
-        else:
-            key = "{}.{}".format(classname, uid)
-            if key not in storage.all():
-                print("** no instance found **")
-            else:
-                attributes = storage.attributes()[classname]
-                for attribute, value in d.items():
-                    if attribute in attributes:
-                        value = attributes[attribute](value)
-                    setattr(storage.all()[key], attribute, value)
-                storage.all()[key].save()
+            return False
+        return True
+
+    def update_instance_with_dict(self, instance, attributes, d):
+
+        for attribute, value in d.items():
+            value = attributes[attribute](value)
+        setattr(instance, attribute, value)
 
 
 if __name__ == "__main__":
