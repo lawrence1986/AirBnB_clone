@@ -35,7 +35,9 @@ class BaseModel:
 
     def __str__(self):
         """String Representation"""
-        return "[{}] ({}) {}".format(type(self).__name__, self.id, self.__dict__)
+
+        class_name = type(self).__name__
+        return f"[{class_name}] ({self.id}) {self.__dict__}"
 
     def save(self):
         """This updates the instance updated_at"""
