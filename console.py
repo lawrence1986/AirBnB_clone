@@ -15,7 +15,6 @@ class HBNBCommand(cmd.Cmd):
 
     def default(self, line):
         """Catch commands if nothing else matches then."""
-        # print("DEF:::", line)
         self._precmd(line)
 
     def do_EOF(self, ar):
@@ -65,19 +64,26 @@ class HBNBCommand(cmd.Cmd):
 
         if not ar:
             print("** class name missing **")
-        else:
-            words = ar.split(" ")
-            if words[0] not in class_map:
-                print("** class doesn't exist **")
-            elif len(words) < 2:
-                print("** instance id missing **")
-            else:
-                key = f"{words[0]}.{words[1]}"
-                if key not in storage.all():
-                    print("** no instance found **")
-                else:
-                    del storage.all()[key]
-                    storage.save()
+            return
+        
+        words = ar.split(" ")
+        
+        if words[0] not in class_map:
+            print("** class doesn't exist **")
+            return
+
+        if len(words) < 2:
+            print("** instance id missing **")
+            return
+
+        key = f"{words[0]}.{words[1]}"
+        
+        if key not in storage.all():
+            print("** no instance found **")
+            return
+
+        del storage.all()[key]
+        storage.save()
 
     def do_all(self, ar):
         class_map = storage.classes()
