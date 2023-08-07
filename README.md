@@ -28,8 +28,8 @@ All of the following files are programs written in Python:
 
 | Filename | Description |
 | -------- | ----------- |
-| ` _printf.c` | Printf function.|
-| ` functions.c` | Prints a char.|
+| ` 0. README, AUTHORS` | README.md, AUTHORS.|
+| ` 1. Be pycodestyle compliant!` | Prints a char.|
 | ` functions1.c` | Prints an unsigned number|
 | ` functions2.c` | Prints the value of a pointer variable|
 | ` get_flags.c` | Write a function calculate active flags.|
