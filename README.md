@@ -22,3 +22,21 @@
 * All your test files and folders should start by test_
 * Your file organization in the tests folder should be the same as your project
 * All your tests should be executed by using this command: python3 -m unittest discover tests
+
+## Files
+All of the following files are programs written in Python:
+
+| Filename | Description |
+| -------- | ----------- |
+| ` _printf.c` | Printf function.|
+| ` functions.c` | Prints a char.|
+| ` functions1.c` | Prints an unsigned number|
+| ` functions2.c` | Prints the value of a pointer variable|
+| ` get_flags.c` | Write a function calculate active flags.|
+| ` get_precision.c` | Calculates the precision for printing |
+| ` get_size.c` | Calculates the size to cast the argument |
+| ` get_width.c` | Calculates the width for printing |
+| ` handlr_print.c` | Prints an argument based on its type |
+| ` main.h` | source file for all executable prototypes for program|
+| ` utils.c` | A function that evaluates if a char is printable|
+| ` write_handlers.c` | A function that explicitly prints a string |
