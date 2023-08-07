@@ -11,7 +11,7 @@ class BaseModel:
 
     def __init__(self, *args, **kwargs):
         """Initializes instance attributes
-        
+
         Args:
             - *args: list of arguments
             - **kwargs: dict of key-values arguments
@@ -33,16 +33,13 @@ class BaseModel:
             self.updated_at = datetime.datetime.now()
             storage.new(self)
 
-
     def __str__(self):
         """String Representation"""
-
-        return "[{}] ({}) {}".\
-                format(type(self).__name__, self.id, self.__dict__)
+        return "[{}] ({}) {}".format(type(self).__name__, self.id,
+			self.__dict__)
 
     def save(self):
         """This updates the instance updated_at"""
-
         self.updated_at = datetime.datetime.now()
         storage.save()
 
