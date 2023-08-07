@@ -19,7 +19,7 @@ class FileStorage:
     def new(self, obj):
         """Generates a key for the object,adds it to objects dict"""
         class_name = type(obj).__name__
-        key = "{}.{}".format(class_name, obj.id)
+        key = f"{class_name}.{obj.id}"
         FileStorage.__objects[key] = obj
 
     def save(self):
