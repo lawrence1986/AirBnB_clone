@@ -88,7 +88,7 @@ class HBNBCommand(cmd.Cmd):
     def do_all(self, ar):
         class_map = storage.classes()
 
-        if ar != "":
+        if ar:
             words = ar.split(" ")
             if words[0] not in class_map:
                 print("** class doesn't exist **")
@@ -112,17 +112,13 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
             return
 
-        classname = match.group(1)
-        uid = match.group(2)
-        attribute = match.group(3)
-        value = match.group(4)
-
+        classname, uid, attribute, value = match.groups()
         if classname not in storage.classes():
             print("** class doesn't exist **")
         elif uid is None:
             print("** instance id missing **")
         else:
-            key = "{}.{}".format(classname, uid)
+            key = f"{classname}.{uid}"
             if key not in storage.all():
                 print("** no instance found **")
             elif not attribute:
