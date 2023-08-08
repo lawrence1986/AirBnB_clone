@@ -27,7 +27,8 @@ class BaseModel:
     def load_attributes(self, **kwargs):
         for key, value in kwargs.items():
             if key == "created_at" or key == "updated_at":
-                value = datetime.datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
+                value = datetime.datetime.strptime(
+                        value, "%Y-%m-%dT%H:%M:%S.%f")
             if key != "__class__":
                 setattr(self, key, value)
 
@@ -54,4 +55,3 @@ class BaseModel:
         my_dict["created_at"] = my_dict["created_at"].isoformat()
         my_dict["updated_at"] = my_dict["updated_at"].isoformat()
         return my_dict
-

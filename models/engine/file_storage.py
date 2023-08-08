@@ -4,11 +4,12 @@ import datetime
 import json
 import os
 
+
 class FileStorage:
     """File path to store data"""
 
     __file_path = "folder.json"
-    
+
     """Dictionary to store objects"""
     __objects = {}
 
@@ -37,7 +38,10 @@ class FileStorage:
             return
         with open(file_path, "r", encoding="utf-8") as f:
             obj_dict = json.load(f)
-            obj_dict = {k: self.classes()[v["__class__"]](**v) for k, v in obj_dict.items()}
+            obj_dict = {
+                    k: self.classes()[v["__class__"]](**v)
+                    for k, v in obj_dict.items()
+                    }
             FileStorage.__objects = obj_dict
 
     def classes(self):
