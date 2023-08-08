@@ -11,7 +11,7 @@ from models.base_model import BaseModel
 class HBNBCommand(cmd.Cmd):
     """The class for command interpreter."""
 
-    prompt = "(hbnb)"
+    prompt = "(hbnb) "
 
     def default(self, line):
         """Catch commands if nothing else matches then."""
