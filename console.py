@@ -27,6 +27,10 @@ class HBNBCommand(cmd.Cmd):
         """Exit the program"""
         return True
 
+    def emptyline(self):
+        """Doesn't do anything on ENTER."""
+        pass
+
     def do_create(self, ar):
         """Create a new instance of BaseModel"""
         class_map = storage.classes()
