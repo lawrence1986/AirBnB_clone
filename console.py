@@ -186,7 +186,6 @@ class HBNBCommand(cmd.Cmd):
         method = match.group(2)
         args = match.group(3)
         match_uid_and_args = re.search('^"([^"]*)"(?:, (.*))?$', args)
-        attr_or_dict = None
 
         if method == "update" and attr_or_dict:
             match_dict = re.search('^({.*})$', attr_or_dict)
