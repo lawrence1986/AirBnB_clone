@@ -62,21 +62,21 @@ EOF  all  count  create  destroy  help  quit  show  update
         """Tests the help command."""
         with patch('sys.stdout', new=StringIO()) as f:
             HBNBCommand().onecmd("help EOF")
-        s = 'Exit the program\n        \n'
+        s = 'Exit the program\n'
         self.assertEqual(s, f.getvalue())
 
     def test_help_quit(self):
         """Tests the help command."""
         with patch('sys.stdout', new=StringIO()) as f:
             HBNBCommand().onecmd("help quit")
-        s = 'Exit the program.\n        \n'
+        s = 'Exit the program.\n'
         self.assertEqual(s, f.getvalue())
 
     def test_help_create(self):
         """Tests the help command."""
         with patch('sys.stdout', new=StringIO()) as f:
             HBNBCommand().onecmd("help create")
-        s = 'Create a new instance of BaseModel\n        \n'
+        s = 'Create a new instance of BaseModel\n'
         self.assertEqual(s, f.getvalue())
 
     def test_help_show(self):
