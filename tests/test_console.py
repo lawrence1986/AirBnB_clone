@@ -69,7 +69,7 @@ EOF  all  count  create  destroy  help  quit  show  update
         """Tests the help command."""
         with patch('sys.stdout', new=StringIO()) as f:
             HBNBCommand().onecmd("help quit")
-        s = 'Exit the program.\n'
+        s = 'Exit the program\n'
         self.assertEqual(s, f.getvalue())
 
     def test_help_create(self):
