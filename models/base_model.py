@@ -25,6 +25,8 @@ class BaseModel:
             storage.new(self)
 
     def load_attributes(self, **kwargs):
+        """Loads instance attributes from key-value pairs"""
+
         for key, value in kwargs.items():
             if key == "created_at" or key == "updated_at":
                 value = datetime.datetime.strptime(
@@ -33,6 +35,8 @@ class BaseModel:
                 setattr(self, key, value)
 
     def initialize_attributes(self):
+        """Initializes instance attributes if no kwargs provided"""
+
         self.id = str(uuid.uuid4())
         now = datetime.datetime.now()
         self.created_at = now
