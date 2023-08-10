@@ -177,6 +177,7 @@ class HBNBCommand(cmd.Cmd):
             print(len(matches))
 
     def _precmd(self, ar):
+        """Process the command before executing it"""
 
         match = re.search(r"^(\w*)\.(\w+)(?:\(([^)]*)\))$", ar)
         if not match:
@@ -200,6 +201,8 @@ class HBNBCommand(cmd.Cmd):
         return command
 
     def extract_uid_and_args(self, ar):
+        """Extract UID and arguments from input"""
+
         match_uid_and_args = re.search('^"([^"]*)"(?:, (.*))?$', args)
         if match_uid_and_args:
             uid = match_uid_and_args.group(1)
@@ -210,6 +213,7 @@ class HBNBCommand(cmd.Cmd):
         return uid, attr_or_dict
 
     def extract_attr_and_value(self, attr_or_dict):
+        """Extract attribute and value from input"""
 
         match_attr_and_value = re.search(
                 r'^(?:"([^"]*)")?(?:, (.*))?$', attr_or_dict)
@@ -220,6 +224,7 @@ class HBNBCommand(cmd.Cmd):
 
     def update_dict(self, classname, uid, s_dict):
         """Helper method for update() with a dictionary."""
+
         if not self.check_and_print_errors(classname, uid):
             return
 
@@ -235,6 +240,7 @@ class HBNBCommand(cmd.Cmd):
             print("** no instance found **")
 
     def check_and_print_errors(self, classname, uid):
+        """checks and prints errors in an input"""
 
         if not classname:
             print("** class name missing **")
@@ -248,6 +254,7 @@ class HBNBCommand(cmd.Cmd):
         return True
 
     def update_instance_with_dict(self, instance, attributes, d):
+        """Update instance attributes using a dictionary"""
 
         for attribute, value in d.items():
             value = attributes[attribute](value)
