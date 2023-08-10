@@ -254,7 +254,7 @@ class HBNBCommand(cmd.Cmd):
         return True
 
     def update_instance_with_dict(self, instance, attributes, d):
-        """Update instance attributes using a dictionary"""
+        """This Update instance attributes using a dictionary"""
 
         for attribute, value in d.items():
             value = attributes[attribute](value)
