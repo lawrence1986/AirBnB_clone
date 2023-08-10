@@ -15,19 +15,19 @@ from models.base_model import BaseModel
 
 class TestAmenity(unittest.TestCase):
 
-    """Test Cases for the Amenity class."""
+    """Test Cases for the Amenity Class."""
 
     def setUp(self):
-        """Sets up test methods."""
+        """Sets up Test Methods."""
         pass
 
     def tearDown(self):
-        """Tears down test methods."""
+        """Tears down Test Methods."""
         self.resetStorage()
         pass
 
     def resetStorage(self):
-        """Resets FileStorage data."""
+        """This Resets FileStorage data."""
         FileStorage._FileStorage__objects = {}
         if os.path.isfile(FileStorage._FileStorage__file_path):
             os.remove(FileStorage._FileStorage__file_path)
