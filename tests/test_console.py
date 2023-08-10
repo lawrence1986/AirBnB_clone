@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Module for TestHBNBCommand class."""
+"""This is a Module for TestHBNBCommand class."""
 
 from console import HBNBCommand
 from models.engine.file_storage import FileStorage
@@ -14,7 +14,7 @@ import os
 
 class TestHBNBCommand(unittest.TestCase):
 
-    """Tests HBNBCommand console."""
+    """This Tests HBNBCommand console."""
 
     attribute_values = {
         str: "foobar108",
@@ -35,19 +35,19 @@ class TestHBNBCommand(unittest.TestCase):
     }
 
     def setUp(self):
-        """Sets up test cases."""
+        """This simply Sets up test cases."""
         if os.path.isfile("file.json"):
             os.remove("file.json")
         self.resetStorage()
 
     def resetStorage(self):
-        """Resets FileStorage data."""
+        """This Resets FileStorage data."""
         FileStorage._FileStorage__objects = {}
         if os.path.isfile(FileStorage._FileStorage__file_path):
             os.remove(FileStorage._FileStorage__file_path)
 
     def test_help(self):
-        """Tests the help command."""
+        """Testing the help command."""
         with patch('sys.stdout', new=StringIO()) as f:
             HBNBCommand().onecmd("help")
         s = """
@@ -299,7 +299,7 @@ EOF  all  count  create  destroy  help  quit  show  update
         self.assertEqual(msg, "** no instance found **")
 
     def help_test_destroy_advanced(self, classname):
-        """Helps test the destroy command."""
+        """This simply Helps test the destroy command."""
         with patch('sys.stdout', new=StringIO()) as f:
             HBNBCommand().onecmd("create {}".format(classname))
         uid = f.getvalue()[:-1]
