@@ -39,3 +39,8 @@ All of the following files are programs written in Python:
 | ` 8. First User` | Write a class User that inherits from BaseModel: models/user.py, models/engine/file_storage.py, console | 
 |` 9. More classes!` | Write all those classes that inherit from BaseModel: |
 | ` 10. Console 1.0` | Update FileStorage to manage correctly serialization and deserialization of all our new classes: Place, State, City, Amenity and Review |
+ | ` 11. All instances by class name` | Update your command interpreter (console.py) to retrieve all instances of a class by using: <class name>.all(). |
+| ` 12. Count instances` | Update your command interpreter (console.py) to retrieve the number of instances of a class: <class name>.count(). |
+| ` 13. Show` | Update your command interpreter (console.py) to retrieve an instance based on its ID: <class name>.show(<id>). |
+| ` 14. Destroy` | Update your command interpreter (console.py) to destroy an instance based on his ID: <class name>.destroy(<id>). |
+| ` 15. Update` | Update your command interpreter (console.py) to update an instance based on his ID: <class name>.update(<id>, <attribute name>, <attribute value>). |
