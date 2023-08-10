@@ -12,16 +12,16 @@ import datetime
 class TestBaseModel(unittest.TestCase):
 
     def setUp(self):
-        """Sets up test cases."""
+        """This Sets up test cases."""
         self.base_model = BaseModel()
 
     def tearDown(self):
-        """Cleans up after each test case."""
+        """Cleaning up after each test case."""
         if os.path.exists('file.json'):
             os.remove('file.json')
 
     def test_initialization(self):
-        """Test initialization of BaseModel"""
+        """This is Test initialization of BaseModel"""
         self.assertIsInstance(self.base_model, BaseModel)
         self.assertTrue(hasattr(self.base_model, 'id'))
         self.assertTrue(hasattr(self.base_model, 'created_at'))
