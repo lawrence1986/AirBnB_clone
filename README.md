@@ -36,4 +36,6 @@ All of the following files are programs written in Python:
 | ` 5. Store first object` | models/engine/file_storage.py, models/engine/__init__.py, models/__init__.py, models/base_model.py, tests/ |
 | ` 6. Console 0.0.1` | console.py |
 | ` 7. Console 0.0.1` | Update your command interpreter (console.py) to have these commands:|
-| ` 8. First User` | Write a class User that inherits from BaseModel: models/user.py, models/engine/file_storage.py, console.py, tests/ |
+| ` 8. First User` | Write a class User that inherits from BaseModel: models/user.py, models/engine/file_storage.py, console | 
+|` 9. More classes!` | Write all those classes that inherit from BaseModel: |
+| ` 10. Console 1.0` | Update FileStorage to manage correctly serialization and deserialization of all our new classes: Place, State, City, Amenity and Review |
