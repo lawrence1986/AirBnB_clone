@@ -9,26 +9,26 @@ from models.base_model import BaseModel
 
 
 class HBNBCommand(cmd.Cmd):
-    """The class for command interpreter."""
+    """This is simply a class for command interpreter."""
 
     prompt = "(hbnb) "
 
     def default(self, line):
-        """Catch commands if nothing else matches then."""
+        """Grasp commands if nothing else matches then."""
         self._precmd(line)
 
     def do_EOF(self, ar):
         """Exit the program"""
         print()
-        """Print a newline before exiting"""
+        """Printing a newline before exiting"""
         return True
 
     def do_quit(self, ar):
-        """Exit the program"""
+        """Program exit"""
         return True
 
     def do_create(self, ar):
-        """Create a new instance of BaseModel"""
+        """Creating a new instance of BaseModel"""
         class_map = storage.classes()
 
         if not ar:
@@ -41,7 +41,7 @@ class HBNBCommand(cmd.Cmd):
             print(ins.id)
 
     def do_show(self, ar):
-        """Print representation of an instance"""
+        """Printing representation of an instance"""
         class_map = storage.classes()
 
         if not ar:
@@ -60,7 +60,7 @@ class HBNBCommand(cmd.Cmd):
                     print(storage.all()[key])
 
     def do_destroy(self, ar):
-        """Deletes an instance based on the class name and id.
+        """This Deletes an instance based on the class name and id.
         """
 
         class_map = storage.classes()
@@ -89,7 +89,7 @@ class HBNBCommand(cmd.Cmd):
         storage.save()
 
     def do_all(self, ar):
-        """Prints all string representation of all instances.
+        """This Prints all string representation of all instances.
         """
 
         class_map = storage.classes()
@@ -108,7 +108,7 @@ class HBNBCommand(cmd.Cmd):
             print(new_list)
 
     def do_update(self, ar):
-        """Updates an instance by adding or updating attribute.
+        """This Updates an instance by adding or updating attribute.
         """
 
         if not ar:
@@ -177,7 +177,7 @@ class HBNBCommand(cmd.Cmd):
             print(len(matches))
 
     def _precmd(self, ar):
-        """Process the command before executing it"""
+        """This Process the command before executing it"""
 
         match = re.search(r"^(\w*)\.(\w+)(?:\(([^)]*)\))$", ar)
         if not match:
