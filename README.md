@@ -37,6 +37,11 @@ The second goal of the project is to build a console to manage all this stored d
 ```
 /AirBnB_clone$ ./console.py
 ```
+3. When this command is run the following prompt should appear:
+```
+(hbnb)
+```
+4. This prompt designates you are in the "HBnB" console, there are a variety of commands available once the console program is run.
 ## Files
 All of the following files are programs written in Python:
 
