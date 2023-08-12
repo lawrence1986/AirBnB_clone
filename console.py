@@ -13,6 +13,9 @@ class HBNBCommand(cmd.Cmd):
 
     prompt = "(hbnb) "
 
+    def emptyline(self):
+        """do not do anything when emptyline is entered"""
+        pass
     def default(self, ar):
         """Grasp commands if nothing else matches then."""
         self._precmd(ar)
