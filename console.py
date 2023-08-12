@@ -177,53 +177,36 @@ class HBNBCommand(cmd.Cmd):
             print(len(matches))
 
     def _precmd(self, ar):
-        """This Process the command before executing it"""
-
+        """Intercepts commands to test for class.syntax()"""
         match = re.search(r"^(\w*)\.(\w+)(?:\(([^)]*)\))$", ar)
-        if not match:
-            return ar
-
         classname = match.group(1)
         method = match.group(2)
         args = match.group(3)
         match_uid_and_args = re.search('^"([^"]*)"(?:, (.*))?$', args)
 
-        if method == "update":
-            uid, attr_or_dict = self.extract_uid_and_args(args)
-            if attr_or_dict:
-                match_dict = re.search('^({.*})$', attr_or_dict)
-                if match_dict:
-                    self.update_dict(classname, uid, match_dict.group(1))
-                    return ""
-                attr_and_value = self.extract_attr_and_value(attr_or_dict)
-            else:
-                attr_and_value = self.extract_attr_and_value(args)
-            command = f"{method} {classname} {uid} {attr_and_value}"
-            self.onecmd(command)
-            return command
-        return ar
-
-    def extract_uid_and_args(self, ar):
-        """Extract UID and arguments from input"""
-
-        match_uid_and_args = re.search('^"([^"]*)"(?:, (.*))?$', args)
+        if not match:
+            return ar
         if match_uid_and_args:
             uid = match_uid_and_args.group(1)
             attr_or_dict = match_uid_and_args.group(2)
         else:
             uid = args
             attr_or_dict = False
-        return uid, attr_or_dict
 
-    def extract_attr_and_value(self, attr_or_dict):
-        """Extract attribute and value from input"""
-
-        match_attr_and_value = re.search(
-                r'^(?:"([^"]*)")?(?:, (.*))?$', attr_or_dict)
-
-        attr = match_attr_and_value.group(1) if match_attr_and_value else ""
-        value = match_attr_and_value.group(2) if match_attr_and_value else ""
-        return f'"{attr}" {value}'
+        attr_and_value = ""
+        if method == "update" and attr_or_dict:
+            match_dict = re.search('^({.*})$', attr_or_dict)
+            if match_dict:
+                self.update_dict(classname, uid, match_dict.group(1))
+                return ""
+            match_attr_and_value = re.search(
+                '^(?:"([^"]*)")?(?:, (.*))?$', attr_or_dict)
+            if match_attr_and_value:
+                attr_and_value = (match_attr_and_value.group(
+                    1) or "") + " " + (match_attr_and_value.group(2) or "")
+        command = method + " " + classname + " " + uid + " " + attr_and_value
+        self.onecmd(command)
+        return command
 
     def update_dict(self, classname, uid, s_dict):
         """Helper method for update() with a dictionary."""
