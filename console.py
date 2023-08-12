@@ -13,9 +13,9 @@ class HBNBCommand(cmd.Cmd):
 
     prompt = "(hbnb) "
 
-    def default(self, line):
+    def default(self, ar):
         """Grasp commands if nothing else matches then."""
-        self._precmd(line)
+        self._precmd(ar)
 
     def do_EOF(self, ar):
         """Exit the program"""
@@ -210,16 +210,16 @@ class HBNBCommand(cmd.Cmd):
         return ar
 
     def update_dict(self, classname, uid, s_dict):
-        """Helper method for update() with a dictionary."""
+        """method for update with a dictionary."""
 
         if not self.check_and_print_errors(classname, uid):
             return
 
         d = json.loads(s_dict.replace("'", '"'))
         key = f"{classname}.{uid}"
-        attributes = storage.attributes().get(classname, {})
+        attributes = storage.attributes()[classname]
 
-        instance = storage.all().get(key)
+        instance = storage.all()[key]
         if instance:
             self.update_instance_with_dict(instance, attributes, d)
             instance.save()
