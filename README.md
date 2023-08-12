@@ -44,4 +44,6 @@ All of the following files are programs written in Python:
 | ` 13. Show` | Update your command interpreter (console.py) to retrieve an instance based on its ID: <class name>.show(<id>). |
 | ` 14. Destroy` | Update your command interpreter (console.py) to destroy an instance based on his ID: <class name>.destroy(<id>). |
 | ` 15. Update` | Update your command interpreter (console.py) to update an instance based on his ID: <class name>.update(<id>, <attribute value>).
-|'16. Update from dictionary'| Update your command interpreter (console.py) to update an instance based on his ID with a dictionary: <class name>.update(<id>, <dictionary representation>).|													     
+|'16. Update from dictionary'| Update your command interpreter (console.py) to update an instance based on his ID with a dictionary: <class name>.update(<id>, <dictionary representation>).|
+|'17. Unittests for the Console!| Write all unittests for console.py, all features! For testing the console, you should “intercept” STDOUT of it, we highly recommend you to use:with patch('sys.stdout', new=StringIO()) as f:
+    HBNBCommand().onecmd("help show")|
