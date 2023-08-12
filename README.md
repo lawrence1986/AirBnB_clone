@@ -42,6 +42,13 @@ The second goal of the project is to build a console to manage all this stored d
 (hbnb)
 ```
 4. This prompt designates you are in the "HBnB" console, there are a variety of commands available once the console program is run.
+##### Commands
+    * create - Creates an instance based on given class
+
+    * destroy - Destroys an object based on class and UUID
+
+    * show - Shows an object based on class and UUID
+
 ## Files
 All of the following files are programs written in Python:
 
