@@ -70,6 +70,12 @@ Usage: create <class_name>
 3aa5babc-efb6-4041-bfe9-3cc9727588f8
 (hbnb)
 ```
+###### Example 1: Show an object
+Usage: show <class_name> <class_id>
+```
+(hbnb) show BaseModel 3aa5babc-efb6-4041-bfe9-3cc9727588f8
+```
+```
 
 ## Files
 All of the following files are programs written in Python:
