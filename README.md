@@ -86,7 +86,7 @@ All of the following files are programs written in Python:
 
 | Filename | Description |
 | -------- | ----------- |
-| ` 0. README, AUTHORS` | README.md, AUTHORS.|
+| ` 0. README, AUTHORS` | README.md, AUTHORS.(https://github.com/lawrence1986/AirBnB_clone/blob/master/AUTHORS)|
 | ` 1. Be pycodestyle compliant!` | Prints a char.|
 | ` 2. Unittests` | tests|
 | ` 3. BaseModel` | models/base_model.py, models/__init__.py, tests/|
