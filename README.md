@@ -43,4 +43,5 @@ All of the following files are programs written in Python:
 | ` 12. Count instances` | Update your command interpreter (console.py) to retrieve the number of instances of a class: <class name>.count(). |
 | ` 13. Show` | Update your command interpreter (console.py) to retrieve an instance based on its ID: <class name>.show(<id>). |
 | ` 14. Destroy` | Update your command interpreter (console.py) to destroy an instance based on his ID: <class name>.destroy(<id>). |
-| ` 15. Update` | Update your command interpreter (console.py) to update an instance based on his ID: <class name>.update(<id>, <attribute name>, <attribute value>). |
+| ` 15. Update` | Update your command interpreter (console.py) to update an instance based on his ID: <class name>.update(<id>, <attribute value>).
+|'16. Update from dictionary'| Update your command interpreter (console.py) to update an instance based on his ID with a dictionary: <class name>.update(<id>, <dictionary representation>).|													     
