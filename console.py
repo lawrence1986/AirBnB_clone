@@ -64,7 +64,7 @@ class HBNBCommand(cmd.Cmd):
                     print(storage.all()[key])
 
     def do_destroy(self, ar):
-        """This Deletes an instance based on the class name and id.
+        """Deletes instance based on the class name and id.
         """
 
         class_map = storage.classes()

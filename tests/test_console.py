@@ -90,14 +90,14 @@ EOF  all  count  create  destroy  help  quit  show  update
         """Tests the help command."""
         with patch('sys.stdout', new=StringIO()) as f:
             HBNBCommand().onecmd("help destroy")
-        s = 'This Deletes an instance based on the class name and id.\n        \n'
+        s = 'Deletes instance based on the class name and id.\n        \n'
         self.assertEqual(s, f.getvalue())
 
     def test_help_all(self):
         """Tests the help command."""
         with patch('sys.stdout', new=StringIO()) as f:
             HBNBCommand().onecmd("help all")
-        s = 'This Prints all string representation of all instances.\n        \n'
+        s = 'Prints string representation of all instances.\n        \n'
         self.assertEqual(s, f.getvalue())
 
     def test_help_count(self):
@@ -111,7 +111,7 @@ EOF  all  count  create  destroy  help  quit  show  update
         """Tests the help command."""
         with patch('sys.stdout', new=StringIO()) as f:
             HBNBCommand().onecmd("help update")
-        s = 'This Updates an instance by adding or updating attribute.\n        \n'
+        s = 'Updates instance by adding or updating attribute.\n        \n'
         self.assertEqual(s, f.getvalue())
 
     def test_do_quit(self):
