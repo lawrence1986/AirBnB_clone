@@ -210,42 +210,31 @@ class HBNBCommand(cmd.Cmd):
         return ar
 
     def update_dict(self, classname, uid, s_dict):
-        """method for update with a dictionary."""
-
-        if not self.check_and_print_errors(classname, uid):
-            return
-
-        d = json.loads(s_dict.replace("'", '"'))
-        key = f"{classname}.{uid}"
-        attributes = storage.attributes().get([classname])
-
-        instance = storage.all().get([key])
-        if instance:
-            self.update_instance_with_dict(instance, attributes, d)
-            instance.save()
-        else:
-            print("** no instance found **")
-
-    def check_and_print_errors(self, classname, uid):
-        """checks and prints errors in an input"""
+        """Helper method for update() with a dictionary."""
+        s = s_dict.replace("'", '"')
+        d = json.loads(s)
 
         if not classname:
             print("** class name missing **")
-            return False
         elif classname not in storage.classes():
             print("** class doesn't exist **")
-            return False
         elif uid is None:
             print("** instance id missing **")
-            return False
-        return True
-
-    def update_instance_with_dict(self, instance, attributes, d):
-        """This Update instance attributes using a dictionary"""
-
-        for attribute, value in d.items():
-            value = attributes[attribute](value)
-        setattr(instance, attribute, value)
+        else:
+            key = f"{classname}.{uid}"
+            if key not in storage.all():
+                print("** no instance found **")
+            else:
+                attributes = storage.attributes().get(classname, {})
+                instance = storage.all().get(key)
+                if instance:
+                    for attribute, value in d.items():
+                        if attribute in attributes:
+                            value = attributes[attribute](value)
+                        setattr(instance, attribute, value)
+                    instance.save()
+                else:
+                    print("** no instance found **")
 
 
 if __name__ == "__main__":
