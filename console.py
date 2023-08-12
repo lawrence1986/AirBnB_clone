@@ -217,9 +217,9 @@ class HBNBCommand(cmd.Cmd):
 
         d = json.loads(s_dict.replace("'", '"'))
         key = f"{classname}.{uid}"
-        attributes = storage.attributes()[classname]
+        attributes = storage.attributes().get([classname])
 
-        instance = storage.all()[key]
+        instance = storage.all().get([key])
         if instance:
             self.update_instance_with_dict(instance, attributes, d)
             instance.save()
