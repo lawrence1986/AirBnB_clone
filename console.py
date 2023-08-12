@@ -224,18 +224,18 @@ class HBNBCommand(cmd.Cmd):
             key = f"{classname}.{uid}"
             if key not in storage.all():
                 print("** no instance found **")
-            return
-
-        attributes = storage.attributes().get(classname, {})
-        instance = storage.all().get(key)
-        if instance:
-            for attribute, value in d.items():
-                if attribute in attributes:
-                    value = attributes[attribute](value)
-                    setattr(instance, attribute, value)
+            else:
+                attributes = storage.attributes().get(classname, {})
+                instance = storage.all().get(key)
+                if instance:
+                    for attribute, value in d.items():
+                        if attribute in attributes:
+                            value = attributes[attribute](value)
+                        setattr(instance, attribute, value)
                     instance.save()
-        else:
-            print("** no instance found **")
+                else:
+                    print("** no instance found **")
+
 
 
 if __name__ == "__main__":
