@@ -188,17 +188,20 @@ class HBNBCommand(cmd.Cmd):
         args = match.group(3)
         match_uid_and_args = re.search('^"([^"]*)"(?:, (.*))?$', args)
 
-        if method == "update" and attr_or_dict:
-            match_dict = re.search('^({.*})$', attr_or_dict)
-            if match_dict:
-                self.update_dict(classname, uid, match_dict.group(1))
-                return ""
-            attr_and_value = self.extract_attr_and_value(attr_or_dict)
-        else:
-            attr_and_value = self.extract_attr_and_value(attr_or_dict)
-        command = f"{method} {classname} {uid} {attr_and_value}"
-        self.onecmd(command)
-        return command
+        if method == "update":
+            uid, attr_or_dict = self.extract_uid_and_args(args)
+            if attr_or_dict:
+                match_dict = re.search('^({.*})$', attr_or_dict)
+                if match_dict:
+                    self.update_dict(classname, uid, match_dict.group(1))
+                    return ""
+                attr_and_value = self.extract_attr_and_value(attr_or_dict)
+            else:
+                attr_and_value = self.extract_attr_and_value(args)
+            command = f"{method} {classname} {uid} {attr_and_value}"
+            self.onecmd(command)
+            return command
+        return ar
 
     def extract_uid_and_args(self, ar):
         """Extract UID and arguments from input"""
