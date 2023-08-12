@@ -48,6 +48,14 @@ The second goal of the project is to build a console to manage all this stored d
     * destroy - Destroys an object based on class and UUID
 
     * show - Shows an object based on class and UUID
+    * all - Shows all objects the program has access to, or all objects of a given class
+
+    * update - Updates existing attributes an object based on class name and UUID
+
+    * quit - Exits the program (EOF will as well)
+
+    - It is possible to call <class_name>.<command>(arguments) as well
+----
 
 ## Files
 All of the following files are programs written in Python:
