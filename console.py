@@ -16,6 +16,7 @@ class HBNBCommand(cmd.Cmd):
     def emptyline(self):
         """do not do anything when emptyline is entered"""
         pass
+
     def default(self, ar):
         """Grasp commands if nothing else matches then."""
         self._precmd(ar)
@@ -238,7 +239,6 @@ class HBNBCommand(cmd.Cmd):
                     instance.save()
                 else:
                     print("** no instance found **")
-
 
 
 if __name__ == "__main__":
