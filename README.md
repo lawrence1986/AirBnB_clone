@@ -55,7 +55,21 @@ The second goal of the project is to build a console to manage all this stored d
     * quit - Exits the program (EOF will as well)
 
     - It is possible to call <class_name>.<command>(arguments) as well
+------------------------------------------------------------------------------------------
+
+<center> <h2>Examples</h2> </center>
+
 ----
+###### Example 0: Create an object
+Usage: create <class_name>
+```
+(hbnb) create BaseModel
+```
+```
+(hbnb) create BaseModel
+3aa5babc-efb6-4041-bfe9-3cc9727588f8
+(hbnb)
+```
 
 ## Files
 All of the following files are programs written in Python:
