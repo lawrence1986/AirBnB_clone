@@ -76,7 +76,11 @@ Usage: show <class_name> <class_id>
 (hbnb) show BaseModel 3aa5babc-efb6-4041-bfe9-3cc9727588f8
 ```
 ```
-
+(hbnb) show BaseModel 3aa5babc-efb6-4041-bfe9-3cc9727588f8
+[BaseModel] (3aa5babc-efb6-4041-bfe9-3cc9727588f8) {'id': '3aa5babc-efb6-4041-bfe9-3cc9727588f8', 'created_at': datetime.datetime(2023, 08, 12, 14, 21, 12, 96959), 
+'updated_at': datetime.datetime(2023, 08, 12, 14, 21, 12, 96971)}
+(hbnb)  
+```
 ## Files
 All of the following files are programs written in Python:
 
