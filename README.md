@@ -29,6 +29,14 @@ The second goal of the project is to build a console to manage all this stored d
 * Your file organization in the tests folder should be the same as your project
 * All your tests should be executed by using this command: python3 -m unittest discover tests
 
+<center> <h1>General Use</h1> </center>
+
+----------------------------------------------------------------------------------------
+1. First clone this repository.
+2. Once the repository is cloned locate the "console.py" file and run it as follows
+```
+/AirBnB_clone$ ./console.py
+```
 ## Files
 All of the following files are programs written in Python:
 
