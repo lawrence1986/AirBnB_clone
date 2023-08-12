@@ -213,6 +213,8 @@ class HBNBCommand(cmd.Cmd):
         """Helper method for update() with a dictionary."""
         s = s_dict.replace("'", '"')
         d = json.loads(s)
+        attributes = storage.attributes().get(classname, {})
+        instance = storage.all().get(key)
 
         if not classname:
             print("** class name missing **")
@@ -225,8 +227,6 @@ class HBNBCommand(cmd.Cmd):
             if key not in storage.all():
                 print("** no instance found **")
             else:
-                attributes = storage.attributes().get(classname, {})
-                instance = storage.all().get(key)
                 if instance:
                     for attribute, value in d.items():
                         if attribute in attributes:
