@@ -207,3 +207,23 @@ article h3 {
 
 	margin-right: 10px;
 }
+
+.cctv_icon {
+	display: inline-block;
+    background-image: url("../images/icon_cctv.png");
+	background-size: cover;
+    width: 20px;
+	height: 20px;
+
+	margin-right: 10px;
+}
+
+.mall_icon {
+	display: inline-block;
+    background-image: url("../images/icon_mall.png");
+	background-size: cover;
+    width: 20px;
+	height: 20px;
+
+	margin-right: 10px;
+}
